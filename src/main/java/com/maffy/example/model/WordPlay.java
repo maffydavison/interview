@@ -55,22 +55,24 @@ public class WordPlay {
     public int [] mergeSortedArrays(int [] one, int [] two) {
 
         int total = one.length + two.length;
+        int oneIndex = 0, twoIndex = 0;
 
         int [] result = new int[total];
         int count = 0;
-        if (one.length > two.length)  {
-            for (int i =0, j=0; count < total;) {
-                while (one[i] < two[j]) {
-                    result[count] = one[i];
-                    count++;i++;
-                }
-                if (count != total -1) {
-                    while(two[j] < one[i]) {
-                        result[count] = two[j];
-                        count++;j++;
-                    }
-                }
+        while (oneIndex < one.length && twoIndex < two.length) {
+            if (one[oneIndex] < two[twoIndex]) {
+                result[count++] = one[oneIndex++];
+            } else {
+                result[count++] = two[twoIndex++];
             }
+        }
+
+        while (oneIndex < one.length) {
+            result[count++] = one[oneIndex++];
+        }
+
+        while (twoIndex < two.length) {
+            result[count++] = two[twoIndex++];
         }
 
         return result;
@@ -125,7 +127,7 @@ public class WordPlay {
 
         char [] from = number.toCharArray();
         char [] to = String.valueOf(addend).toCharArray();
-        int sum = 0;
+        int sum;
         int carry = 0;
         int shorter = from.length > to.length ? to.length - 1 : from.length -1;
         int longer = from.length > to.length ? from.length - 1 : to.length -1;
