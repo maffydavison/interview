@@ -23,9 +23,10 @@ public class WordPlayTest {
 
         int [] result = service.mergeSortedArrays(one, two);
 
-        for (int i : result) {
-            System.out.println(i);
-        }
+        assert result.length == (one.length + two.length);
+        assert result[0] == 1;
+        assert result[1] == 3;
+        assert result[2] == 5;
 
     }
 }
