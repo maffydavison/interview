@@ -31,6 +31,16 @@ public class NumberPlayTest {
     }
 
     @Test
+    public void testFindPairs() throws Exception {
+        int [] input = {1, 2, 3, 4, 5, 6, 7, 8};
+        int sum = 5;
+        String result = service.findPairs(input, sum);
+        assert result.contains("1+4");
+        assert result.contains("2+3");
+        assert result.split(",").length == 4;
+    }
+
+    @Test
     public void testSumSquares() throws Exception {
         int [] input = {2, 3, 4};
         int result = service.sumSquares(input);

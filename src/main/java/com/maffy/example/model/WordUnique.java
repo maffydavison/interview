@@ -76,7 +76,7 @@ public class WordUnique {
             }
         }
 
-        return result == null ? "null" : result.get(0);
+        return result.isEmpty() ? "nothing found" : result.get(0);
     }
 
     public List<String> getLongestWords(List<String> words) {

@@ -52,6 +52,7 @@ public class NumberPlay {
     }
     /*
     Assumes that all numbers are duplicated except one - and returns that one
+    int array cannot contain -1
      */
     public int findSingleAmidstDups(int [] input) {
         int result = -1;
@@ -64,6 +65,24 @@ public class NumberPlay {
         }
 
         return result;
+    }
+
+    public String findPairs(int [] numbers, int sum) {
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+        StringBuilder builder = new StringBuilder();
+        for (int i : numbers) {
+                map.put(i, null);
+        }
+
+        for (int oneIndex = 0; oneIndex < numbers.length; oneIndex++) {
+            int add = sum - numbers[oneIndex];
+            if (map.containsKey(add)) {
+                String input = String.format("%d+%d,", numbers[oneIndex], add);
+                builder.append(input);
+            }
+        }
+        String result = builder.toString();
+        return result.substring(0,result.length() - 1);
     }
 
     public int findSingleAmidstDupsBruteForce(int [] input) {
