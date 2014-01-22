@@ -64,6 +64,7 @@ public class Spellchecker {
 
     private String stripDups(String inputString) {
         char found = '1';
+        String result = null;
         StringBuilder builder = new StringBuilder();
         for (char c : inputString.toCharArray()) {
             if (found == '1') {
@@ -77,11 +78,31 @@ public class Spellchecker {
             }
         }
         if (dictionary.containsKey(builder.toString())) {
-            return builder.toString();
+            result = builder.toString();
         } else {
-            return null;
+            result = stripExtras(builder.toString());
         }
+
+        return result;
     }
 
-
+    private String stripExtras(String inputString) {
+        String result = null;
+        for (String s : dictionary.keySet()) {
+            if (s.startsWith(String.valueOf(inputString.charAt(0)))) {
+                boolean matched = true;
+                for (int i = 0; i < s.length(); i++) {
+                    if (!inputString.contains(String.valueOf(s.charAt(i)))) {
+                        matched = false;
+                        break;
+                    }
+                }
+                if (matched) {
+                    result = s;
+                    break;
+                }
+            }
+        }
+        return result;
+    }
 }

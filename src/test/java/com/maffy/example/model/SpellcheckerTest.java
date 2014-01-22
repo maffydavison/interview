@@ -21,6 +21,7 @@ public class SpellcheckerTest {
      Case (upper/lower) errors: "inSIDE" => "inside"
      Repeated letters: "jjoobbb" => "job"
      Incorrect vowels: "weke" => "wake"
+     "ffoaoaoaoaoaoaaoaoaoaoaoadd" => "food"
      */
 
     @Test
@@ -36,5 +37,9 @@ public class SpellcheckerTest {
         result = service.correct("weke");
         assert !result.equalsIgnoreCase("no suggestion");
         assertEquals("wake", result);
+
+        result = service.correct("ffoaoaoaoaoaoaaoaoaoaoaoadd");
+        assert !result.equalsIgnoreCase("no suggestion");
+        assertEquals("food", result);
     }
 }
