@@ -52,13 +52,14 @@ public class NumberPlay {
     }
     /*
     Assumes that all numbers are duplicated except one - and returns that one
-    int array cannot contain -1
      */
     public int findSingleAmidstDups(int [] input) {
-        int result = -1;
+        boolean start = true;
+        int result = 0;
         for (int i : input) {
-           if (result == -1) {
+           if (start) {
                result = i;
+               start = false;
            } else {
                result ^= i;
            }
@@ -81,8 +82,7 @@ public class NumberPlay {
                 builder.append(input);
             }
         }
-        String result = builder.toString();
-        return result.substring(0,result.length() - 1);
+        return builder.toString().substring(0, builder.toString().length() - 1);
     }
 
     public int findSingleAmidstDupsBruteForce(int [] input) {
