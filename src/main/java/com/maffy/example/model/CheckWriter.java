@@ -34,7 +34,7 @@ public class CheckWriter {
                 result += " " + translate(value % 1000000);
             }
         } else if (value >= 1000000000) {
-            result += translate(value / 1000000000) + " billion";
+            result += translate(value / 1000000000) + " billion";// have to change input of translate() to long...
             if (value % 1000000000 > 0) {
                 result += " " + translate(value % 1000000000);
             }

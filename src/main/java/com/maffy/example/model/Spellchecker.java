@@ -1,9 +1,6 @@
 package com.maffy.example.model;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -108,5 +105,26 @@ public class Spellchecker {
             }
         }
         return result;
+    }
+
+    public static void main(String [] args) {
+
+        Spellchecker service = new Spellchecker("/Users/maryanndavison/ideaGit/testFile.txt");
+        String word = null;
+        boolean keepGoing = true;
+        while (keepGoing) {
+            System.out.print("> ");
+            try {
+                BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+                word = br.readLine();
+                if (word.isEmpty()) {
+                    keepGoing = false;
+                } else {
+                    System.out.println(service.correct(word));
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

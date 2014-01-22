@@ -1,5 +1,6 @@
 package com.maffy.example.model;
 
+import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,6 +28,17 @@ public class WordPlayTest {
         assert result[0] == 1;
         assert result[1] == 3;
         assert result[2] == 5;
+
+    }
+
+    @Test
+    public void testAddStringToInt() throws Exception {
+        String one = "1234567";
+        int two = 456;
+
+        String result = WordPlay.addStringToInt(one, two);
+        assert result != null;
+        Assert.assertEquals("1235023", result);
 
     }
 }

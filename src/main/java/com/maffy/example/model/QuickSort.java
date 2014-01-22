@@ -54,14 +54,14 @@ public class QuickSort {
         }
         this.numbers = values;
         int number = values.length;
-        quicksort(0, number - 1);
+        quickSort(0, number - 1);
     }
 
     public int [] getNumbers() {
         return numbers;
     }
 
-    private void quicksort(int low, int high) {
+    private void quickSort(int low, int high) {
         int i = low, j = high;
         // Get the pivot element from the middle of the list
         int pivot = numbers[low + (high-low)/2];
@@ -92,9 +92,9 @@ public class QuickSort {
         }
         // Recursion
         if (low < j)
-            quicksort(low, j);
+            quickSort(low, j);
         if (i < high)
-            quicksort(i, high);
+            quickSort(i, high);
     }
 
     private void exchange(int i, int j) {

@@ -20,38 +20,6 @@ import java.util.regex.Pattern;
  */
 public class WordPlay {
 
-    /*
-    public void merge(int[] A, int[] B, int[] C) {
-      int i, j, k, m, n;
-      i = 0;
-      j = 0;
-      k = 0;
-      m = A.length;
-      n = B.length;
-      while (i < m && j < n) {
-            if (A[i] <= B[j]) {
-                  C[k] = A[i];
-                  i++;
-            } else {
-                  C[k] = B[j];
-                  j++;
-            }
-            k++;
-      }
-      if (i < m) {
-            for (int p = i; p < m; p++) {
-                  C[k] = A[p];
-                  k++;
-            }
-      } else {
-            for (int p = j; p < n; p++) {
-                  C[k] = B[p];
-                  k++;
-            }
-      }
-}
-
-     */
     public int [] mergeSortedArrays(int [] one, int [] two) {
 
         int total = one.length + two.length;
@@ -78,51 +46,6 @@ public class WordPlay {
         return result;
     }
 
-    /*
-       public static String addStringToInt(String number, int addend) {
-
-        char [] from = number.toCharArray();
-        char [] to = String.valueOf(addend).toCharArray();
-        int sum = 0;
-        int carry = 0;
-        StringBuilder builder = new StringBuilder();
-        if (from.length > to.length) {
-            for (int i = to.length - 1, j = from.length -1; j >= 0 ; i--, j--) {
-                if (i >= 0) {
-                    sum = Character.getNumericValue(from[j]) + Character.getNumericValue(to[i]) + carry;
-                } else {
-                    sum = Character.getNumericValue(from[j]) + carry;
-                }
-                if(sum > 9) {
-                    carry = 1;
-                    builder.append(sum % 10);
-                } else {
-                    carry = 0;
-                    builder.append(sum);
-                }
-
-            }
-        } else {   // to[] > from[]
-            for (int i = to.length - 1, j = from.length - 1; i>= 0; i--, j--) {
-                if (j >= 0) {
-                    sum = Character.getNumericValue(from[j]) + Character.getNumericValue(to[i]) + carry;
-                } else {
-                    sum = Character.getNumericValue(to[i]) + carry;
-                }
-                if (sum > 9) {
-                    carry = 1;
-                    builder.append(sum % 10);
-                } else {
-                    carry = 0;
-                    builder.append(sum);
-                }
-
-            }
-
-        }
-        return builder.reverse().toString();
-    }
-     */
     public static String addStringToInt(String number, int addend) {
 
         char [] from = number.toCharArray();
@@ -134,18 +57,10 @@ public class WordPlay {
         StringBuilder builder = new StringBuilder();
 
             while (longer >= 0) {
-                if (from.length > to.length) {
-                    if (shorter >= 0 ) {
-                        sum = Character.getNumericValue(from[longer]) + Character.getNumericValue(to[shorter]) + carry;
-                    } else {
-                        sum = Character.getNumericValue(from[longer]) + carry;
-                    }
-                }  else {
-                    if (shorter >= 0 ) {
-                        sum = Character.getNumericValue(to[longer]) + Character.getNumericValue(from[shorter]) + carry;
-                    } else {
-                        sum = Character.getNumericValue(to[longer]) + carry;
-                    }
+                if (shorter >= 0 ) {
+                    sum = Character.getNumericValue(from[longer]) + Character.getNumericValue(to[shorter]) + carry;
+                } else {
+                    sum = Character.getNumericValue(from[longer]) + carry;
                 }
                 if(sum > 9) {
                     carry = 1;
