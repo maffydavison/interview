@@ -15,7 +15,6 @@ public class Spellchecker {
     public static Map<String, Integer> dictionary = new HashMap<String, Integer>();
 
     private String vowels = "aeiouy";
-    private char [] consonants = {'b', 'c', 'd', 'f', 'f', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z'};
 
     public Spellchecker(String inputFilename) {
         File inputFile = new File(inputFilename);
@@ -29,29 +28,24 @@ public class Spellchecker {
             e.printStackTrace();
         }
     }
-    /*
-     Case (upper/lower) errors: "inSIDE" => "inside"
-     Repeated letters: "jjoobbb" => "job"
-     Incorrect vowels: "weke" => "wake"
-     */
 
     public String correct(String inputString) {
-        String result = "No Suggestion";
+        String result = null;
         String input = inputString.toLowerCase();
         if (dictionary.containsKey(input)) {
             result = input;
-        } else {
+        }
+        else {
             result = stripDups(input);
             if (result == null) {
                 result = checkVowels(input);
             }
         }
 
-        return result;
+        return result == null ? "No Suggestion" : result;
     }
 
     private String checkVowels(String input) {
-
         for (char c : input.toCharArray()) {
             int index = vowels.indexOf(c);
             if (index != -1) {

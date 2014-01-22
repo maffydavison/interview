@@ -17,7 +17,7 @@ public class SpellcheckerTest {
         service = new Spellchecker("/Users/maryanndavison/ideaGit/testFile.txt");
     }
 
-        /*
+     /*
      Case (upper/lower) errors: "inSIDE" => "inside"
      Repeated letters: "jjoobbb" => "job"
      Incorrect vowels: "weke" => "wake"
@@ -26,15 +26,15 @@ public class SpellcheckerTest {
     @Test
     public void testCorrect() throws Exception {
         String result = service.correct("inSIDE");
-        assert result != null;
+        assert !result.equalsIgnoreCase("no suggestion");
         assertEquals("inside", result);
 
         result = service.correct("jjoobbb");
-        assert result != null;
+        assert !result.equalsIgnoreCase("no suggestion");
         assertEquals("job", result);
 
         result = service.correct("weke");
-        assert result != null;
+        assert !result.equalsIgnoreCase("no suggestion");
         assertEquals("wake", result);
     }
 }
