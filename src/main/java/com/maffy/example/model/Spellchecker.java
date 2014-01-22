@@ -22,7 +22,7 @@ public class Spellchecker {
             BufferedReader in = new BufferedReader (new FileReader(inputFile));
             String line;
             while ((line = in.readLine()) != null) {
-                dictionary.put(line, 1);
+                dictionary.put(line.toLowerCase(), 1);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -46,6 +46,7 @@ public class Spellchecker {
     }
 
     private String checkVowels(String input) {
+        int count = 0;
         for (char c : input.toCharArray()) {
             int index = vowels.indexOf(c);
             if (index != -1) {
@@ -58,6 +59,7 @@ public class Spellchecker {
                     }
                 }
             }
+            count++;
         }
         return null;
     }
@@ -80,6 +82,7 @@ public class Spellchecker {
         if (dictionary.containsKey(builder.toString())) {
             result = builder.toString();
         } else {
+            // last resort
             result = stripExtras(builder.toString());
         }
 
@@ -89,6 +92,7 @@ public class Spellchecker {
     private String stripExtras(String inputString) {
         String result = null;
         for (String s : dictionary.keySet()) {
+            // examples provided seem to assume that the first letter is correct
             if (s.startsWith(String.valueOf(inputString.charAt(0)))) {
                 boolean matched = true;
                 for (int i = 0; i < s.length(); i++) {
