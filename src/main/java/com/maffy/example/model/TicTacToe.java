@@ -331,17 +331,9 @@ public class TicTacToe {
             return x;
         }
 
-       /* public void setX(int x) {
-            this.x = x;
-        }*/
-
         public int getY() {
             return y;
         }
-
-/*        public void setY(int y) {
-            this.y = y;
-        }*/
 
         public String getMark() {
             return mark;
@@ -366,10 +358,6 @@ public class TicTacToe {
         game.setPosition(1, 1, "X");
         game.setPosition(2, 2, "Y");
 
-/*        for (Position p: game.getMarkedPositions()) {
-            System.out.println(p.toString());
-        }*/
-
         Position move = game.findMove("Y");
         move.setMark("Y");
         System.out.println("Suggested move: " + move.toString());
@@ -378,9 +366,7 @@ public class TicTacToe {
         move.setMark("X");
         System.out.println("Suggested move: " + move.toString());
         game.setPosition(move);
-/*        for (Position p: game.getMarkedPositions()) {
-            System.out.println(p.toString());
-        }*/
+
         String winner = game.whoWon();
         System.out.println("Who won? " + winner);
 
