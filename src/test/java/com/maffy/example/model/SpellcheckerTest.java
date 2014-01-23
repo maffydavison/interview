@@ -41,5 +41,9 @@ public class SpellcheckerTest {
         result = service.correct("ffoaoaoaoaoaoaaoaoaoaoaoadd");
         assert !result.equalsIgnoreCase("no suggestion");
         assertEquals("food", result);
+
+/*        result = service.correct("cUNspiricy");
+        assert !result.equalsIgnoreCase("no suggestion");
+        assertEquals("conspiracy", result);*/
     }
 }
