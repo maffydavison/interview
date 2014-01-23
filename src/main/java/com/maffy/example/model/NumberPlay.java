@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Created by maryannfinnerty on 12/16/13.
+ * Created by maryanndavison on 12/16/13.
  */
 public class NumberPlay {
 
@@ -15,12 +15,11 @@ public class NumberPlay {
     and only one duplicate in the array of integers
      */
     public int findDup(int [] numbers) {
-
         int result = 0;
         for (int i : numbers) {
             result += i;
         }
-        return result - ((numbers.length * (numbers.length -1))/2);
+        return result - (numbers.length * (numbers.length -1)/2);
     }
 
     public int findDupWithZero(int [] numbers) {

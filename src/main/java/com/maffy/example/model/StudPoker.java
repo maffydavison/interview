@@ -48,7 +48,7 @@ public class StudPoker {
         int check = 0;
         while (iter.hasNext()) {
             Integer test = (Integer) iter.next();
-            if (test.intValue() == 2) {
+            if (test == 2) {
                 check++;
             }
         }
@@ -68,7 +68,7 @@ public class StudPoker {
         int check = 0;
         while (iter.hasNext()) {
             Integer test = (Integer) iter.next();
-            if (test.intValue() == 2) {
+            if (test == 2) {
                 check++;
             }
         }
@@ -166,7 +166,7 @@ public class StudPoker {
 
     public boolean isFlush(List<String> hand) {
         Map<String, Integer> resultMap = findSuitMatches(hand);
-        return resultMap.keySet().size() == 1 && resultMap.values().iterator().next().intValue() == 5;
+        return resultMap.keySet().size() == 1 && resultMap.values().iterator().next() == 5;
 
     }
 
