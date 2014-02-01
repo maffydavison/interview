@@ -49,8 +49,12 @@ public class WordPlayTest {
     @Test
     public void testIsPalindrome() throws Exception {
         String one = "A man, a plan, a canal, Panama!";
+        String two = "A can, a plan, a canal, Panama!";
         boolean result = service.isPalindrome(one);
         assert result;
+
+        result = service.isPalindrome(two);
+        assert !result;
     }
 
     @Test
@@ -75,6 +79,7 @@ public class WordPlayTest {
         input.add("apple");
         input.add("bowwow");
         input.add("cow");
+        input.add("daily");
         input.add("dolphin");
         input.add("door");
         input.add("friend");
@@ -82,8 +87,7 @@ public class WordPlayTest {
         String word = "dog";
 
         List<String> result = service.insertWordIntoSortedList(input, word);
-        for (String s : result) {
-            System.out.println(s);
-        }
+        assert result.size() == 8;
+        assert result.get(4).equalsIgnoreCase(word);
     }
 }
