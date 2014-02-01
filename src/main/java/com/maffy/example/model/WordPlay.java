@@ -20,6 +20,20 @@ import java.util.regex.Pattern;
  */
 public class WordPlay {
 
+    public boolean isPalindrome(String input) {
+        boolean result = true;
+
+        String test = input.replaceAll("[ ,.;!]", "").toLowerCase();
+        for (int i = 0, j= test.length() -1; i != j; i++, j--) {
+            if (test.charAt(i) != test.charAt(j)) {
+                result = false;
+                break;
+            }
+        }
+
+        return result;
+    }
+
     public int [] mergeSortedArrays(int [] one, int [] two) {
 
         int total = one.length + two.length;
@@ -56,31 +70,46 @@ public class WordPlay {
         int longer = from.length > to.length ? from.length - 1 : to.length -1;
         StringBuilder builder = new StringBuilder();
 
-            while (longer >= 0) {
-                if (shorter >= 0 ) {
-                    sum = Character.getNumericValue(from[longer]) + Character.getNumericValue(to[shorter]) + carry;
-                } else {
-                    sum = Character.getNumericValue(from[longer]) + carry;
-                }
-                if(sum > 9) {
-                    carry = 1;
-                    builder.append(sum % 10);
-                } else {
-                    carry = 0;
-                    builder.append(sum);
-                }
-
-                longer--;
-                shorter--;
+        while (longer >= 0) {
+            if (shorter >= 0 ) {
+                sum = Character.getNumericValue(from[longer]) + Character.getNumericValue(to[shorter]) + carry;
+            } else {
+                sum = Character.getNumericValue(from[longer]) + carry;
             }
+            if(sum > 9) {
+                carry = 1;
+                builder.append(sum % 10);
+            } else {
+                carry = 0;
+                builder.append(sum);
+            }
+
+            longer--;
+            shorter--;
+        }
 
 
         return builder.reverse().toString();
     }
 
+    public ListNode reverse(ListNode node) {
+        ListNode result;
+        ListNode secondElement;
+        if (node == null || node.next == null) {
+            result = node;
+        } else {
+            secondElement = node.next;
+            node.next = null;
+            ListNode reversed = reverse(secondElement);
+            secondElement.next = node;
+            result = reversed;
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         String [] arrayOfWords = { "my", "dog", "has", "fleas"};
-        List arrayList = new ArrayList(Arrays.asList(arrayOfWords));
+        ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(arrayOfWords));
         System.out.println("Before reverse as whole words...");
         System.out.println(arrayList.toString());
 
@@ -113,7 +142,7 @@ public class WordPlay {
         System.out.println("Reversed: " + reverse);
 
         System.out.println();
-        arrayList = Arrays.asList(arrayOfWords);
+        arrayList = (ArrayList<String>) Arrays.asList(arrayOfWords);
         ListIterator listIterator = arrayList.listIterator();
         Collections.sort(arrayList);
         System.out.println("Sorted Array for no reason...");

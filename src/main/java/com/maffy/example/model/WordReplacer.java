@@ -64,6 +64,7 @@ public class WordReplacer {
         file = textFile;
     }
 
+
     /**
      * Finds the occurrences of a word in the file
      *

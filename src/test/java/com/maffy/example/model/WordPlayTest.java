@@ -4,6 +4,8 @@ import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.LinkedList;
+
 /**
  * Created by maryanndavison on 1/16/14.
  */
@@ -40,5 +42,28 @@ public class WordPlayTest {
         assert result != null;
         Assert.assertEquals("1235023", result);
 
+    }
+
+    @Test
+    public void testIsPalindrome() throws Exception {
+        String one = "A man, a plan, a canal, Panama!";
+        boolean result = service.isPalindrome(one);
+        assert result;
+    }
+
+    @Test
+    public void testReverseList() throws Exception {
+        ListNode one = new ListNode();
+        ListNode two = new ListNode();
+        ListNode three = new ListNode();
+        one.setData("ONE");
+        one.setNext(two);
+        two.setData("TWO");
+        two.setNext(three);
+        three.setData("THREE");
+        three.setNext(null);
+
+        ListNode resultNode = service.reverse(one);
+        assert resultNode.getData().equalsIgnoreCase("THREE");
     }
 }
