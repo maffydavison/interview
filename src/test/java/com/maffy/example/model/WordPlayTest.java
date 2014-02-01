@@ -4,7 +4,9 @@ import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by maryanndavison on 1/16/14.
@@ -65,5 +67,23 @@ public class WordPlayTest {
 
         ListNode resultNode = service.reverse(one);
         assert resultNode.getData().equalsIgnoreCase("THREE");
+    }
+
+    @Test
+    public void testInsertWordIntoSortedList() throws Exception {
+        List<String> input = new ArrayList<String>();
+        input.add("apple");
+        input.add("bowwow");
+        input.add("cow");
+        input.add("dolphin");
+        input.add("door");
+        input.add("friend");
+
+        String word = "dog";
+
+        List<String> result = service.insertWordIntoSortedList(input, word);
+        for (String s : result) {
+            System.out.println(s);
+        }
     }
 }
